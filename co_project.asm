@@ -1,4 +1,4 @@
-#kza kza kza kza 
+
 .data
 	#first message
 	choseInputType: .asciiz "what kind of element you want to sort ?\n1 - for numbers \n2 - for characters\n"
@@ -35,7 +35,7 @@
  	
  	#binary search messages
  	num_toSearch_message:.asciiz "\nenter the number to search for:"
- 	char_toSearch_message:.asciiz "\nenter the number to search for: "
+ 	char_toSearch_message:.asciiz "\nenter char to search for: "
  	found: .asciiz "\nThe Element is present in the Array at Position: "
 	not_found: .asciiz "\nElement not found in the Array.\n"
  	space: .asciiz "  "
@@ -275,7 +275,7 @@ main:
 		
 ###################################################################################
 ###################################################################################
-#kamal
+#rafaat
 #fun to copy unstracture array into new array 
 copyArrayToAntherInt:
 	addi $t1 , $zero,0
@@ -701,7 +701,7 @@ binarySearchInt:
 		
 binarySearchChar:
 	li $v0 , 4
-	la $a0 , ###char that want to Search message
+	la $a0 , char_toSearch_message ###char that want to Search message
 	syscall
 					
 	#take char to search for 
@@ -712,7 +712,7 @@ binarySearchChar:
 
 	#a0 array
 
-	la $a0, ### name of array of chars
+	la $a0, ArrayOfCharElemnts
 
 	#a1=low
 
@@ -758,7 +758,7 @@ binarySearchChar:
 
 		mflo $s3
 
-		mul $s3, $s3, 1 ####m
+		mul $s3, $s3, 1 #
 
 		add $a0, $a0, $s3
 
@@ -811,7 +811,7 @@ binarySearchChar:
 		j exit_char
 
 		exit_char:
-		j ### retrun to main mnue
+		j sub_While_2_searcheforChar
 	
 ######################################################################################
 ######################################################################################
