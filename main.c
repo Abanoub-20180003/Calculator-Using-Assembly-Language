@@ -1,16 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * File:   main.c
- * Author: bebo
- *
- * Created on December 21, 2020, 4:46 PM
- */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -88,7 +75,7 @@ void printCharElemnts(char arr[],int flagC){
 //##############################################################################
 //binarySearch  Ahmad
 
-int binarySearchInt(int arr [], int search){
+void binarySearchInt(int arr [], int search){
    int first, last, middle;
 
 
@@ -562,7 +549,7 @@ int main(int argc, char** argv) {
                         " a --> SEARCH FOR CHARACTER\n"
                         " b --> START OVER\n"
                         " c --> EXIT\n"
-                        "(1/2/3)? :");
+                        "(a/b/c)? :");
                 scanf("%s", &choice);
                 printf("*******\n\n");
                 if(choice == 'a'){
