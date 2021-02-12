@@ -1,5 +1,15 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
-
+/*
+ * File:   main.c
+ * Author: bebo
+ *
+ * Created on December 21, 2020, 4:46 PM
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,30 +20,27 @@
  *
  */
   int size = 0;
-  int choice = 0;
-
-
-
+  char choice = 0;
 
 
 //##############################################################################
 //Raafat
-int getArrayOfIntegers(int * arr)
+int getArrayOfIntegers(int *arr)
 {
-    
+
     for(int i = 0; i < size; i++)
     {
         int x;
         scanf("%d", &x);
         arr[i] = x;
     }
-    return arr;
+    return *arr;
 
 }
 
 int getArrayOfCharacters(char *arr)
 {
-    
+
     for(int i = 0; i < size; i++)
     {
         char x;
@@ -41,61 +48,37 @@ int getArrayOfCharacters(char *arr)
         scanf("%c", &x);
         arr[i] = x;
     }
-    return arr;
+    return *arr;
 }
 
-int choiceTypeOfIntSort(int * ArrayOfIntElemnts,int choice){
-     if(choice == 1)
-            {
-                 insertionSort(ArrayOfIntElemnts, size);
-                 return 1 ;
-            }
-            else if(choice == 2)
-            {
-                 MergeSort(ArrayOfIntElemnts, 0, size-1);
-                 return 1 ;
-            }
-            else if(choice == 3)
-            {
-                 quickSort(ArrayOfIntElemnts, 0, size-1);
-                 return 1 ;
-            }
-            else{
-                return -1;
-            }
 
-}
-
-int  choiceTypeOfCharSort(char * ArrayOfCharElemnts,char choice){
-     if(choice == 1)
-            {
-                 insertionSortChars(ArrayOfCharElemnts, size);
-                 return 1 ;
-            }
-            else if(choice == 2)
-            {
-                 MergeSortChars(ArrayOfCharElemnts, 0, size-1);
-                 return 1 ;
-            }
-            else if(choice == 3)
-            {
-                 quickSortChars(ArrayOfCharElemnts, 0, size-1);
-                 return 1 ;
-            }
-            else 
-                return -1;
-
-}
-
-void printIntElemnts(int arr[]){
+void printIntElemnts(int arr[],int flagP){
+    if(flagP==0)
+    {
     for(int i = 0; i < size ; i++){
-        printf("%d\n",arr[i]);
+        printf("%d ",arr[i]);
+        }
+    }
+    if (flagP==1)
+    {
+        for(int i = 0; i < size ; i++){
+        printf("%d. %d\n",i+1,arr[i]);
+        }
     }
 }
 
-void printCharElemnts(char arr[]){
+void printCharElemnts(char arr[],int flagC){
+    if(flagC==0)
+    {
     for(int i = 0; i < size ; i++){
-        printf("%c\n",arr[i]);
+         printf("%c ",arr[i]);
+        }
+    }
+    if (flagC==1)
+    {
+        for(int i = 0; i < size ; i++){
+        printf("%d. %c\n",i+1,arr[i]);
+        }
     }
 }
 
@@ -118,7 +101,8 @@ int binarySearchInt(int arr [], int search){
     if (arr[middle] < search)
       first = middle + 1;
     else if (arr[middle] == search) {
-        printf("loction of %d is %d", search , middle);
+        printf("Number[%d] is found at row[%d]\n", search , middle+1);
+        printf("*******\n\n");
       break;
     }
     else
@@ -127,7 +111,10 @@ int binarySearchInt(int arr [], int search){
     middle = (first + last)/2;
   }
   if (first > last)
-      printf("Not found! %d isn't present in the list.\n", search);
+  {
+      printf("NOT FOUND!\nNumber[%d] was not found at the list\n", search);
+      printf("*******\n\n");
+  }
 
 }
 
@@ -144,7 +131,8 @@ void binarySearchChar( char arr[], char search){
     if (arr[middle] < search)
       first = middle + 1;
     else if (arr[middle] == search) {
-       printf("loction of %c is %d", search , middle);
+       printf("Character[%c] is found at row[%d]\n", search , middle+1);
+        printf("*******\n\n");
       break;
     }
     else
@@ -152,9 +140,11 @@ void binarySearchChar( char arr[], char search){
 
     middle = (first + last)/2;
   }
-  if (first > last)//Not found! number  isn't present in the list.\n"
-      printf("Not found! %c isn't present in the list.\n", search);
-
+    if (first > last)
+    {
+      printf("NOT FOUND!\nCharacter[%c] was not found at the list\n", search);
+      printf("*******\n\n");
+    }
 }
 
 //##############################################################################
@@ -378,142 +368,226 @@ void quickSortChars(char *arr, int low, int high)
         quickSortChars(arr, pi + 1, high);
     }
 }
-//######################################################################################
+int choiceTypeOfIntSort(int * ArrayOfIntElemnts,char choice){
+     if(choice == 'a')
+            {
+                 insertionSort(ArrayOfIntElemnts, size);
+                 return 1 ;
+            }
+            else if(choice == 'b')
+            {
+                 MergeSort(ArrayOfIntElemnts, 0, size-1);
+                 return 1 ;
+            }
+            else if(choice == 'c')
+            {
+                 quickSort(ArrayOfIntElemnts, 0, size-1);
+                 return 1 ;
+            }
+            else{
+                return -1;
+            }
+
+}
+
+int  choiceTypeOfCharSort(char * ArrayOfCharElemnts,char choice){
+     if(choice == 'a')
+            {
+                 insertionSortChars(ArrayOfCharElemnts, size);
+                 return 1 ;
+            }
+            else if(choice == 'b')
+            {
+                 MergeSortChars(ArrayOfCharElemnts, 0, size-1);
+                 return 1 ;
+            }
+            else if(choice == 'c')
+            {
+                 quickSortChars(ArrayOfCharElemnts, 0, size-1);
+                 return 1 ;
+            }
+            else
+                return -1;
+
+}
+//########################################""MAIN""###########################################
 int main(int argc, char** argv) {
+    printf("THIS PROGRAM IS DESIGNED FOR SORTING ( NUMBERS & CHARACTERS )\nWITH DIFFERENT SORTING ALGORITHM UPON YOUR CHOICE\n-------------------------------------------------------------\n\n");
     while(1){
-        printf("what kind of element you want to sort ?\n(1 - for numbers 2 - for characters)\n");
+        printf("Choose the type of the elements that you wish to sort \n a --> NUMBERS \n b --> CHARACTERS \n(a/b)? :");
 
 
-        scanf("%d", &choice);
-        if(choice == 1)
+        scanf("%s", &choice);
+        printf("*******\n\n");
+        if(choice == 'a')
         {
+            printf("YOUR CHOICE:NUMBERS\n*********\n\n");
             int unsArrayOfIntElemnts[size];
-            printf("how many elements?\n");
-            scanf("%d", &size);
-            printf("%s", "Enter your list of numbers\n");
+            printf("Enter how many number you wish to sort :");
 
+            scanf("%d", &size);
+            printf("*******\n\n");
+            printf("%s", "Enter the list of numbers one by one\n(HINT:EACH ROW SHOULD CONTAIN ONLY ONE ELEMENT)\n");
             //get array from user and put in unsArrayOfIntElemnts
             getArrayOfIntegers(unsArrayOfIntElemnts);
 
-            //copy unsArray to new Array 
+            //copy unsArray to new Array
             int ArrayOfIntElemnts[size] ;
             for(int i = 0; i < size ; i++){
                ArrayOfIntElemnts[i] = unsArrayOfIntElemnts[i];
             }
-            
-            //choice type of sort 
+             printf("*******\n\n");
+            //choice type of sort
             while(1){
-                printf("What kind of sort you want ?\n"
-                       "1- for insertion sort\n"
-                       "2- for merge sort\n"
-                       "3- for quick sort\n");
+                printf("Choose the sort method from the list below\n"
+                       " a --> INSERTION SORT\n"
+                       " b --> MERGE SORT\n"
+                       " c --> QUICK SORT\n");
+                printf("(a/b/c)? :");
+                scanf("%s", &choice);
+              printf("*******\n\n");
 
-                scanf("%d", &choice);
-                
-                
-                
+
                 int result = choiceTypeOfIntSort(ArrayOfIntElemnts ,choice);
-               
+
 
 
                 if(result == -1)
-                    printf(" incorrect choice\n");
+                    printf("INCORRECT CHOICE\nYOUR CHOICE SHOULD BE (a/b/c)\n*********\n\n");
                 else
-                    break;    
+                    break;
             }
 
             /// make sure every thing works
-            printf(" elements befor sorting\n");
-            printIntElemnts(unsArrayOfIntElemnts);
-            printf(" elements after sorting\n");
-            printIntElemnts(ArrayOfIntElemnts);
-            
+            printf("ELEMENTS BEFORE SORTING\n");
+            printf("[ ");
+            printIntElemnts(unsArrayOfIntElemnts,0);
+            printf("]\n");
+            printf("*******\n\n");
+
+
+
+            printf("ELEMENTS AFTER SORTING\n");
+            printf("-----\n");
+            printIntElemnts(ArrayOfIntElemnts,1);
+            printf("-----\n");
+            printf("*******\n\n");
 
             while(1){
-                printf("choice an option 1-searche for number \n "
-                        "2-sort elements\n"
-                        "3-exit");
-                scanf("%d", &choice);
-                if(choice == 1){
-                    printf("enter the number to search for ");
+                printf("Choose an option\n"
+                        " a --> SEARCH FOR NUMBER\n"
+                        " b --> START OVER\n"
+                        " c --> EXIT\n"
+                        "(a/b/c)? :");
+                scanf("%s", &choice);
+                printf("*******\n\n");
+                if(choice == 'a'){
+                    printf("Enter the number that you are searching for :");
                     int search;
-                    scanf("%d", &choice);
+                    scanf("%d", &search);
+                    printf("*******\n\n");
                     binarySearchInt( ArrayOfIntElemnts ,search);
                 }
-                else if(choice == 2)
-                    break;
-                else if(choice == 3)
+                else if(choice == 'b')
+                    {
+                     break;
+                    }
+                else if(choice == 'c')
+                {
+                    printf("<<<<<< THANKS! >>>>>>\n");
                     return 0;
-                else
-                   printf("incorrect choice");
+                }
+                else {printf("INCORRECT CHOICE\nYOUR CHOICE SHOULD BE (a/b/c)\n*********\n\n");}
             }
         }
-        else if(choice == 2)
+        ///////////////////////////////////////////////////////////////
+        //////////////////////CHARACTER////////////////////////////////
+        else if(choice == 'b')
         {
+             printf("YOUR CHOICE:CHARACTERS\n*********\n\n");
             char unArrayOfCharElements[size];
             fflush(stdin);
-            printf("how many elements?\n");
+             printf("Enter how many character you wish to sort :");
             scanf("%d", &size);
-            printf("%s", "Enter your list of numbers\n");
-
+             printf("*******\n\n");
+            printf("%s", "Enter the list of characters one by one\n(HINT:EACH ROW SHOULD CONTAIN ONLY ONE ELEMENT)\n");
             getArrayOfCharacters(unArrayOfCharElements);
 
-            //copy unsArray to new Array 
+            //copy unsArray to new Array
             char ArrayOfCharElemnts[size] ;
             for(int i = 0; i < size ; i++){
                ArrayOfCharElemnts[i] = unArrayOfCharElements[i];
             }
-
+            printf("*******\n\n");
 
             while(1){
-                printf("What kind of sort you want ?\n"
-                       "1- for insertion sort\n"
-                       "2- for merge sort\n"
-                       "3- for quick sort\n");
-                fflush(stdin);
-                scanf("%d", &choice);
+                     printf("Choose the sort method from the list below\n"
+                       " a --> INSERTION SORT\n"
+                       " b --> MERGE SORT\n"
+                       " c --> QUICK SORT\n");
+                printf("(a/b/c)? :");
+                scanf("%s", &choice);
+              printf("*******\n\n");
 
                 int result = choiceTypeOfCharSort(ArrayOfCharElemnts,choice);
-               
+
 
 
                 if(result == -1)
-                    printf(" incorrect choice\n");
+                    printf("INCORRECT CHOICE\nYOUR CHOICE SHOULD BE (a/b/c)\n*********\n\n");
                 else
-                    break;    
+                    break;
             }
+
             /// make sure every thing works
-            printf(" elements befor sorting\n");
-            printCharElemnts(unArrayOfCharElements);
-            printf(" elements after sorting\n");
-            printCharElemnts(ArrayOfCharElemnts);
+            printf("ELEMENTS BEFORE SORTING\n");
+            printf("[ ");
+            //printIntElemnts(unsArrayOfIntElemnts,0);
+            printCharElemnts(unArrayOfCharElements,0);
+            printf("]\n");
+            printf("*******\n\n");
 
 
-            
+
+            printf("ELEMENTS AFTER SORTING\n");
+            printf("-----\n");
+           // printIntElemnts(ArrayOfIntElemnts,1);
+            printCharElemnts(ArrayOfCharElemnts,1);
+            printf("-----\n");
+            printf("*******\n\n");
+
+
             while(1){
-                printf("choice an option 1-searche for character \n "
-                        "2-sort elements\n"
-                        "3-exit");
-                scanf("%d", &choice);
-                if(choice == 1){
-                    printf("enter the character to search for ");
+                        printf("Choose an option\n"
+                        " a --> SEARCH FOR CHARACTER\n"
+                        " b --> START OVER\n"
+                        " c --> EXIT\n"
+                        "(1/2/3)? :");
+                scanf("%s", &choice);
+                printf("*******\n\n");
+                if(choice == 'a'){
+                    printf("Enter the character that you are searching for :");
                     char search;
-                    scanf("%d", &choice);
+                    scanf("%s", &search);
+                    printf("*******\n\n");
                     binarySearchChar( ArrayOfCharElemnts ,search);
                 }
-                else if(choice == 2)
-                    break;
-                else if(choice == 3)
+                else if(choice == 'b')
+                    {
+                     break;
+                    }
+                else if(choice == 'c')
+                {
+                    printf("<<<<<< THANKS! >>>>>>\n");
                     return 0;
-                else
-                   printf("incorrect choice");
-
+                }
+                else {printf("INCORRECT CHOICE\nYOUR CHOICE SHOULD BE (a/b/c)\n*********\n\n");}
             }
+        }
+        else {
+            printf("INCORRECT CHOICE\nYOUR CHOICE SHOULD BE (a/b)\n*********\n\n");
         }
     }//end while
 
     return (EXIT_SUCCESS);
-}//end main 
-
-
-
+}//end main
