@@ -325,9 +325,7 @@ copyArrayToAntherChar:
 		j sub_While_1_ChooseKindOfSortChar
 		
 	
-###################################################################################	
-###################################################################################
-#raafat
+
 getArrayOfIntegers:
 	addi $t1 , $zero,0
 	lw $t2 ,size
@@ -612,7 +610,7 @@ binarySearchInt:
 	binary_search:
 		
 		#$s2=mid
-		la $a0, ArrayOfCharElemnts
+		la $a0, ArrayOfIntElemnts
 
 		addi $s2, $zero, 0
 
